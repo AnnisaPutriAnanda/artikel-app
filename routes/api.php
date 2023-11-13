@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('api/1', [ArticleController::class, 'displayAll']);
+Route::get('api/2/{id}', [ArticleController::class, 'display']);
+Route::post('api/3', [ArticleController::class, 'post']);
+Route::delete('api/4/{id}', [ArticleController::class, 'destroy']);
